@@ -11,7 +11,10 @@ RUN set -ex; \
 		bash \
 		coreutils \
 		rsync \
-		tzdata
+		tzdata \
+                ca-certificates \
+                php-pear \
+		php-net-smtp \
 
 RUN set -ex; \
 	\
@@ -26,9 +29,6 @@ RUN set -ex; \
 		openldap-dev \
 		postgresql-dev \
 		sqlite-dev \
-                ca-certificates \
-                php-pear \
-		php-net-smtp \
 	; \
 	\
 	docker-php-ext-configure gd; \
