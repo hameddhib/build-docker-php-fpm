@@ -75,6 +75,12 @@ RUN apk --update add --virtual build-dependencies build-base openssl-dev autocon
   && apk del build-dependencies build-base openssl-dev autoconf \
   && rm -rf /var/cache/apk/*
 
+RUN apk update \
+    && apk add --no-cache \
+        php-pear \
+        php-net-smtp \
+	ca-certificates \
+
 # add composer.phar
 ADD https://getcomposer.org/installer /tmp/composer-installer.php
 
