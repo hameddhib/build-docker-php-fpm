@@ -60,9 +60,8 @@ RUN set -ex; \
 
 RUN apk add libmemcached-dev
     
-# Enable the community repository
-RUN sed -i -e 's/v[0-9]\.[0-9]/edge/g' /etc/apk/repositories && \
-    echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
+# Install dependencies
+RUN apk add --no-cache libc6-compat libstdc++
 
 # Update the package index and install MongoDB tools
 RUN apk update && \
