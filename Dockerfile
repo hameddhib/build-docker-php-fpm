@@ -71,6 +71,13 @@ RUN apk --update add --virtual build-dependencies build-base openssl-dev autocon
   && docker-php-ext-enable mongodb \
   && apk del build-dependencies build-base openssl-dev autoconf \
   && rm -rf /var/cache/apk/*
+# install 
+
+# php-net-smtp  - tested with php 7.4
+RUN apk update \
+    && apk add --no-cache \
+        php-pear \
+        php-net-smtp
 
 # add composer.phar
 ADD https://getcomposer.org/installer /tmp/composer-installer.php
