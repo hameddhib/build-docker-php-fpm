@@ -1,8 +1,11 @@
+########## TO DO ############
+# Client SMTP a ajouter
+#RUN yum install php-pear-Net-SMTP -y 
+############################
+
 FROM php:7.4-fpm-alpine
 
-LABEL maintainer="Hamed dhib <hamed.dhib@leadwire.io>"
-
-RUN apk update
+LABEL maintainer="Hamed dhib"
 
 # entrypoint.sh and installto.sh dependencies
 RUN set -ex; \
@@ -11,7 +14,7 @@ RUN set -ex; \
 		bash \
 		coreutils \
 		rsync \
-		tzdata \
+		tzdata
 
 RUN set -ex; \
 	\
@@ -27,7 +30,7 @@ RUN set -ex; \
 		postgresql-dev \
 		sqlite-dev \
 	; \
- 
+	\
 	docker-php-ext-configure gd; \
 	docker-php-ext-configure ldap; \
 	docker-php-ext-install \
@@ -71,13 +74,6 @@ RUN apk --update add --virtual build-dependencies build-base openssl-dev autocon
   && docker-php-ext-enable mongodb \
   && apk del build-dependencies build-base openssl-dev autoconf \
   && rm -rf /var/cache/apk/*
-# install 
-
-# php-net-smtp  - tested with php 7.4
-RUN apk update \
-    && apk add --no-cache \
-        php-pear \
-        php-net-smtp
 
 # add composer.phar
 ADD https://getcomposer.org/installer /tmp/composer-installer.php
