@@ -27,7 +27,7 @@ RUN set -ex; \
 		postgresql-dev \
 		sqlite-dev \
 	; \
-	\
+ 
 	docker-php-ext-configure gd; \
 	docker-php-ext-configure ldap; \
 	docker-php-ext-install \
