@@ -13,8 +13,6 @@ RUN set -ex; \
 		rsync \
 		tzdata \
                 ca-certificates \
-                php-pear \
-		php-net-smtp \
 
 RUN set -ex; \
 	\
