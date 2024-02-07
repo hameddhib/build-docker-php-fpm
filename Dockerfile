@@ -2,6 +2,8 @@ FROM php:7.4-fpm-alpine
 
 LABEL maintainer="Hamed dhib <hamed.dhib@leadwire.io>"
 
+RUN apk update
+
 # entrypoint.sh and installto.sh dependencies
 RUN set -ex; \
 	\
