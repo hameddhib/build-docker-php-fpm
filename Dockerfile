@@ -78,9 +78,9 @@ RUN apk --update add --virtual build-dependencies build-base openssl-dev autocon
 RUN apk update \
     && apk add --no-cache \
         php-pear \
-	Net_SMTP \
-	ca-certificates \
-
+	ca-certificates
+ 
+RUN pear install Net_SMTP
 # add composer.phar
 ADD https://getcomposer.org/installer /tmp/composer-installer.php
 
