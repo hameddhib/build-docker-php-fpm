@@ -78,6 +78,7 @@ RUN apk --update add --virtual build-dependencies build-base openssl-dev autocon
 RUN apk update \
     && apk add --no-cache \
         php-pear \
+	Net_SMTP \
 	ca-certificates \
 
 # add composer.phar
