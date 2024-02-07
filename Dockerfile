@@ -12,7 +12,6 @@ RUN set -ex; \
 		coreutils \
 		rsync \
 		tzdata \
-                ca-certificates \
 
 RUN set -ex; \
 	\
