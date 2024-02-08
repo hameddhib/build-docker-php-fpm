@@ -53,7 +53,14 @@ RUN set -ex; \
 
 # memcached - tested with php 7.4
 
-RUN apk add libmemcached-dev
+# RUN apk add libmemcached-dev
+
+# Install dependencies
+RUN apk --no-cache add libmemcached-dev zlib-dev libmemcached && \
+    apk --no-cache add --virtual .phpize-deps $PHPIZE_DEPS && \
+    pecl install memcached && \
+    docker-php-ext-enable memcached && \
+    apk del .phpize-deps
     
 # Install dependencies
 RUN apk add --no-cache libc6-compat libstdc++
