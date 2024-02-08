@@ -53,8 +53,6 @@ RUN set -ex; \
 
 # memcached - tested with php 7.4
 
-# RUN apk add libmemcached-dev
-
 # Install dependencies
 RUN apk --no-cache add libmemcached-dev zlib-dev libmemcached && \
     apk --no-cache add --virtual .phpize-deps $PHPIZE_DEPS && \
@@ -68,6 +66,20 @@ RUN apk add --no-cache libc6-compat libstdc++
 # Update the package index and install MongoDB tools
 RUN apk update && \
     apk add --no-cache mongodb-tools
+
+# Install necessary dependencies
+RUN apk add --no-cache \
+        autoconf \
+        g++ \
+        make \
+        openssl-dev \
+        cyrus-sasl-dev \
+        libsasl \
+        zlib-dev
+
+# Install the MongoDB PHP extension
+RUN pecl install mongodb && \
+    docker-php-ext-enable mongodb
 
 RUN apk update \
     && apk add --no-cache \
