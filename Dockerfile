@@ -103,8 +103,8 @@ RUN docker-php-ext-configure imap --with-imap --with-imap-ssl \
     && docker-php-ext-install imap
 
 #Install SOAP extension and other dependencies
-RUN apk add --no-cache libxml2-dev &&
-docker-php-ext-install soap &&
+RUN apk add --no-cache libxml2-dev && \
+docker-php-ext-install soap && \
 docker-php-ext-enable soap
 
 
