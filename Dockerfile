@@ -55,7 +55,10 @@ RUN apk update \
     && apk add --no-cache \
         php-pear \
 	ca-certificates
- 
+RUN apk add --no-cache libxml2-dev && \
+	docker-php-ext-install soap && \
+	docker-php-ext-enable soap
+
 RUN pear install Net_SMTP
 # add composer.phar
 ADD https://getcomposer.org/installer /tmp/composer-installer.php
