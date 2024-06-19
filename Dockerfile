@@ -107,6 +107,12 @@ RUN apk add --no-cache libxml2-dev && \
 docker-php-ext-install soap && \
 docker-php-ext-enable soap
 
+# Update the package list and install necessary packages for mbstring
+RUN apk update && apk add --no-cache \
+    oniguruma-dev
+
+# Install mbstring extension
+RUN docker-php-ext-install mbstring
 
 # Clean up
 RUN rm -rf /tmp/* /var/cache/apk/*
