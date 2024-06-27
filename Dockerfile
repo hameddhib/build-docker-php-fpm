@@ -114,5 +114,8 @@ RUN apk update && apk add --no-cache \
 # Install mbstring extension
 RUN docker-php-ext-install mbstring
 
+# Install gettext
+RUN apk update && apk add --no-cache gettext
+
 # Clean up
 RUN rm -rf /tmp/* /var/cache/apk/*
