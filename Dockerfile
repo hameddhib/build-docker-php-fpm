@@ -119,3 +119,4 @@ RUN apk update && apk add --no-cache gettext
 
 # Clean up
 RUN rm -rf /tmp/* /var/cache/apk/*
+RUN rm -fr  /var/www/html/*
